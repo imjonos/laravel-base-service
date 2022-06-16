@@ -15,9 +15,9 @@ abstract class BaseService
     /**
      * @throws BindingResolutionException
      */
-    public function update(int $modeId, array $data): bool
+    public function update(int $modelId, array $data): bool
     {
-        return $this->getRepository()->update($modeId, $data);
+        return $this->getRepository()->update($modelId, $data);
     }
 
     /**
@@ -49,8 +49,8 @@ abstract class BaseService
     /**
      * @throws BindingResolutionException
      */
-    public function delete(int $modeId): bool
+    public function delete(int $modelId): bool
     {
-        return $this->getRepository()->delete($modeId);
+        return $this->getRepository()->delete($modelId);
     }
 }
