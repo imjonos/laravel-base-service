@@ -12,6 +12,15 @@ abstract class BaseService
     protected string $repositoryClass = BaseRepository::class;
     private ?BaseRepository $repository = null;
 
+    
+    /**
+     * @throws BindingResolutionException
+     */
+    public function find(int $modelId): Model
+    {
+        return $this->getRepository()->find($modelId);
+    }
+    
     /**
      * @throws BindingResolutionException
      */
