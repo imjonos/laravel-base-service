@@ -28,6 +28,14 @@ abstract class BaseService
     {
         return $this->getRepository()->update($modelId, $data);
     }
+    
+    /**
+     * @throws BindingResolutionException
+     */
+    public function exists(int $modelId): bool
+    {
+        return $this->getRepository()->exists($modelId);
+    }
 
     /**
      * @throws BindingResolutionException
