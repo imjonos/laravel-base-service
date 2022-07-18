@@ -5,6 +5,7 @@ namespace Nos\BaseService;
 use Exception;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 use Nos\BaseRepository\EloquentRepository as BaseRepository;
 
 abstract class BaseService
@@ -12,6 +13,13 @@ abstract class BaseService
     protected string $repositoryClass = BaseRepository::class;
     private ?BaseRepository $repository = null;
 
+    /**
+     * @throws BindingResolutionException
+     */
+    public function all(): Collection
+    {
+        return $this->getRepository()->all();
+    }
     
     /**
      * @throws BindingResolutionException
