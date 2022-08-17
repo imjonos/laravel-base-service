@@ -4,8 +4,8 @@ namespace Nos\BaseService;
 
 use Exception;
 use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Nos\BaseRepository\EloquentRepository as BaseRepository;
 
 abstract class BaseService
@@ -20,30 +20,6 @@ abstract class BaseService
     {
         return $this->getRepository()->all();
     }
-    
-    /**
-     * @throws BindingResolutionException
-     */
-    public function find(int $modelId): Model
-    {
-        return $this->getRepository()->find($modelId);
-    }
-    
-    /**
-     * @throws BindingResolutionException
-     */
-    public function update(int $modelId, array $data): bool
-    {
-        return $this->getRepository()->update($modelId, $data);
-    }
-    
-    /**
-     * @throws BindingResolutionException
-     */
-    public function exists(int $modelId): bool
-    {
-        return $this->getRepository()->exists($modelId);
-    }
 
     /**
      * @throws BindingResolutionException
@@ -55,6 +31,38 @@ abstract class BaseService
         }
 
         return $this->repository;
+    }
+
+    /**
+     * @throws BindingResolutionException
+     */
+    public function count(): int
+    {
+        return $this->getRepository()->count();
+    }
+
+    /**
+     * @throws BindingResolutionException
+     */
+    public function find(int $modelId): Model
+    {
+        return $this->getRepository()->find($modelId);
+    }
+
+    /**
+     * @throws BindingResolutionException
+     */
+    public function update(int $modelId, array $data): bool
+    {
+        return $this->getRepository()->update($modelId, $data);
+    }
+
+    /**
+     * @throws BindingResolutionException
+     */
+    public function exists(int $modelId): bool
+    {
+        return $this->getRepository()->exists($modelId);
     }
 
     /**
