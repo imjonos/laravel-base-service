@@ -44,6 +44,14 @@ abstract class BaseService
     /**
      * @throws BindingResolutionException
      */
+    public function updateOrCreate(array $attributes, array $data): Model
+    {
+        return $this->getRepository()->query()->updateOrCreate($attributes, $data);
+    }
+
+    /**
+     * @throws BindingResolutionException
+     */
     public function find(int $modelId): Model
     {
         return $this->getRepository()->find($modelId);
