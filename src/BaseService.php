@@ -6,6 +6,8 @@ use Exception;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Nos\BaseRepository\EloquentRepository as BaseRepository;
 
 abstract class BaseService
@@ -16,9 +18,21 @@ abstract class BaseService
     /**
      * @throws BindingResolutionException
      */
-    public function all(): Collection
-    {
-        return $this->getRepository()->all();
+    public function paginate(
+        int $pageNumber = 1,
+        int $pageSite = 10,
+        callable $builderCallback = null
+    ): LengthAwarePaginator {
+        Paginator::currentPageResolver(function () use ($pageNumber) {
+            return $pageNumber;
+        });
+        $query = $this->getRepository()->query();
+
+        if ($builderCallback) {
+            $query = $builderCallback($query);
+        }
+
+        return $query->paginate($pageSite);
     }
 
     /**
@@ -31,6 +45,14 @@ abstract class BaseService
         }
 
         return $this->repository;
+    }
+
+    /**
+     * @throws BindingResolutionException
+     */
+    public function all(): Collection
+    {
+        return $this->getRepository()->all();
     }
 
     /**
