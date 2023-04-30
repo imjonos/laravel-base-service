@@ -20,7 +20,7 @@ abstract class BaseService
      */
     public function paginate(
         int $pageNumber = 1,
-        int $pageSite = 10,
+        int $pageSize = 10,
         callable $builderCallback = null
     ): LengthAwarePaginator {
         Paginator::currentPageResolver(function () use ($pageNumber) {
@@ -32,7 +32,7 @@ abstract class BaseService
             $query = $builderCallback($query);
         }
 
-        return $query->paginate($pageSite);
+        return $query->paginate($pageSize);
     }
 
     /**
