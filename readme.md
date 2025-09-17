@@ -127,6 +127,6 @@ Please see the [license file](license.md) for more information.
 
 ---
 
-## Contributing
+## 🚀 Contributing
 
 Please see [contributing.md](contributing.md) for details and a todolist.
