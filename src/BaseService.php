@@ -74,7 +74,7 @@ abstract class BaseService
     /**
      * @throws BindingResolutionException
      */
-    public function find(int $modelId): Model
+    public function find(int $modelId): ?Model
     {
         return $this->getRepository()->find($modelId);
     }
