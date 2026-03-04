@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
-use Nos\BaseRepository\EloquentRepository as BaseRepository;
+use Nos\BaseRepository\Interfaces\EloquentRepositoryInterface;
 
 abstract class BaseService
 {
-    protected string $repositoryClass = BaseRepository::class;
-    private ?BaseRepository $repository = null;
+    protected string $repositoryClass = EloquentRepositoryInterface::class;
+    private ?EloquentRepositoryInterface $repository = null;
 
     /**
      * @throws BindingResolutionException
@@ -38,7 +38,7 @@ abstract class BaseService
     /**
      * @throws BindingResolutionException
      */
-    public function getRepository(): BaseRepository
+    public function getRepository(): EloquentRepositoryInterface
     {
         if (!$this->repository) {
             $this->repository = app()->make($this->repositoryClass);
