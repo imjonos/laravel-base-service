@@ -3,7 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/imjonos/laravel-base-service.svg?style=flat-square)](https://packagist.org/packages/imjonos/laravel-base-service)  
 [![Total Downloads](https://img.shields.io/packagist/dt/imjonos/laravel-base-service.svg?style=flat-square)](https://packagist.org/packages/imjonos/laravel-base-service)
 
-A **generic base service class** for Laravel projects that provides a consistent and reusable way to handle business logic and data access. It integrates with `laravel-base-repository` and simplifies working with Eloquent models by encapsulating common operations like create, read, update, delete (CRUD), pagination, and more.
+A **generic base service class** for Laravel projects that provides a consistent and reusable way to handle business logic and data access. It integrates with `laravel-base-repository` and simplifies working with Eloquent models by encapsulating common operations like create, read, update, delete (CRUD), pagination, and more. The package also includes debugging capabilities through the `DebugInterface` and `Debuggable` trait, allowing for enhanced troubleshooting during development.
 
 ---
 
